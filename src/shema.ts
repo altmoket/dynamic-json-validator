@@ -63,6 +63,6 @@ export const validateData = (schema: ZodTypeAny, data: any) => {
     if (result.success) {
         return { valid: true, errors: null };
     } else {
-        return { valid: false, errors: result.error };
+        return { valid: false, errors: result.error.issues };
     }
 };
