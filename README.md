@@ -134,7 +134,32 @@ Validates an object against a simple schema.
 }
 ```
 
----
+### `POST /api/types`
+
+Generate a TypeScript interface based on the structure of a provided JSON payload.
+This endpoint internally infers a schema, converts it to a simplified structure, and then builds a TypeScript interface from that structure.
+
+**Request Example:**
+
+```json
+{
+  "name": "Leo",
+  "age": 30,
+  "active": true,
+  "tags": ["dev", "ts"]
+}
+```
+
+Important:
+Unlike the other endpoints, this one expects the object directly as the request body, not nested under a field such as "object".
+
+**Successful Response:**
+
+```json
+{
+  "interface": "export interface MyType {\n  name: string;\n  age: number;\n  active: boolean;\n  tags: Array<string>;\n}"
+}
+```
 
 ## Testing
 

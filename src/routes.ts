@@ -23,5 +23,5 @@ router.post('/types', (req, res) => {
     const inferredSchema = inferSchema(data);
     const simpleSchema = zodToSimple(inferredSchema);
     const tsTypes = generateTypes('MyType', simpleSchema);
-    res.send(tsTypes);
+    res.json({ interface: tsTypes });
 });
