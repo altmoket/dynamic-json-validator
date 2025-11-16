@@ -1,0 +1,29 @@
+{
+  "name": "dynamic-json-validator",
+  "version": "1.0.0",
+  "description": "A Node.js + TypeScript API that dynamically infers JSON schemas, validates incoming data, and generates TypeScript types automatically. Perfect for developers who want to enforce data integrity without writing schemas manually.",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/altmoket/dynamic-json-validator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/altmoket/dynamic-json-validator/issues"
+  },
+  "homepage": "https://github.com/altmoket/dynamic-json-validator#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "zod": "^4.1.12"
+  }
+}
