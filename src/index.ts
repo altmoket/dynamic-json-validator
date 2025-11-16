@@ -1,23 +1,12 @@
-import { inferSchema, validateData, zodToSimple } from "./shema";
+import express from 'express';
+import bodyParser from 'body-parser';
+import { router } from './routes';
 
-const schema = {
-    "name": "Leo",
-    "age": 30,
-    "active": true,
-    "tags": ["dev", "ts"]
-};
+const app = express();
+app.use(bodyParser.json());
+app.use('/api', router);
 
-const inferredSchema = inferSchema(schema);
-console.log("Inferred Schema:", inferredSchema);
-
-const schemaToSimple = zodToSimple(inferredSchema);
-console.log("Schema to Simple:", schemaToSimple);
-
-const isValid = validateData(inferredSchema, {
-    "name": "Leo",
-    "age": "30",
-    "active": true,
-    "aaaa": 8,
-    "tags": [4, "dev", "ts", 6]
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
 });
-console.log("Is Valid:", isValid);
