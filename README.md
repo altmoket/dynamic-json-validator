@@ -3,8 +3,6 @@
 A Node.js + TypeScript service that infers schemas from any JSON, converts them into a simplified, serializable format, rebuilds a Zod schema dynamically, and validates incoming data against that schema.  
 Essentially, it's a tiny dynamic typing engine that behaves like a dev tool disguised as an API.
 
----
-
 ## Features
 
 - **Automatic schema inference** using Zod.
@@ -16,8 +14,6 @@ Essentially, it's a tiny dynamic typing engine that behaves like a dev tool disg
 - **Dockerized** for easy deployment.
 - **Environment variable support** (e.g., port configuration).
 
----
-
 ## Tech Stack
 
 - Node.js + TypeScript
@@ -26,8 +22,6 @@ Essentially, it's a tiny dynamic typing engine that behaves like a dev tool disg
 - Jest + Supertest
 - Docker
 - GitHub Actions (CI)
-
----
 
 ## Installation & Usage
 
@@ -64,8 +58,6 @@ Essentially, it's a tiny dynamic typing engine that behaves like a dev tool disg
    npm start
    ```
 
----
-
 ## API Endpoints
 
 ### `POST /api/infer-schema`
@@ -95,8 +87,6 @@ Infers a schema from any JSON input.
   }
 }
 ```
-
----
 
 ### `POST /api/validate`
 
