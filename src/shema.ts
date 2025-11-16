@@ -32,12 +32,33 @@ export const zodToSimple = (obj: ZodTypeAny): any => {
         const element = (arr as any).element ?? (arr as any)._def?.type ?? (arr as any)._def?.schema;
         return [zodToSimple(element)];
     } else {
-        return obj._def.type.toLowerCase()
+        const typeName = (obj as any)._def?.typeName || (obj as any).def?.type || 'any';
+        return typeName.toLowerCase().replace('zod', '');
     }
-
 }
 
-export const validateData = (schema: ZodAny, data: any) => {
+export function simpleToZod(simple: any): ZodTypeAny {
+    if (Array.isArray(simple)) {
+        return z.array(simpleToZod(simple[0]));
+    }
+
+    if (typeof simple === 'object' && simple !== null) {
+        const shape: any = {};
+        for (const key in simple) {
+            shape[key] = simpleToZod(simple[key]);
+        }
+        return z.object(shape).strict();
+    }
+
+    switch (simple) {
+        case 'string': return z.string();
+        case 'number': return z.number();
+        case 'boolean': return z.boolean();
+        default: return z.any();
+    }
+}
+
+export const validateData = (schema: ZodTypeAny, data: any) => {
     const result = schema.safeParse(data);
     if (result.success) {
         return { valid: true, errors: null };
